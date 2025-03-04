@@ -16,7 +16,7 @@ CREATE TABLE Employees (
 INSERT INTO Employees VALUES (1, 'Hakan', 'Hakansson', 'HR', 30000);
 INSERT INTO Employees VALUES (2, 'Bob', 'Bobson', 'IT', 35000);
 ```
-
+**initial table**
 | employee_id | first_name | last_name | department | salary |
 | ----------- | ---------- | --------- | ---------- | ------ |
 | 1           | Hakan      | Hakansson | HR         | 30000  |
