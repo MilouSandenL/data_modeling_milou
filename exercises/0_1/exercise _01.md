@@ -68,18 +68,32 @@ HospitalDepartment
 | 2                      | 1           | 2             |
 
 HospitalDoctor
+(relation mellan sjukhus och läkare)
 
 TODO: left for the reader
+|hospital_dr_id|hospital_id|doctor_id|
+|---|---|---|
+|1|1|1|
+|2|1|2|
+|3|1|3|
 
 DepartmentDoctor
+(raletion mellan avdelningar och läkare)
 
 TODO: left for the reader
-
+|department_dr_id|department_id|doctor_id|
+|---|---|---|
+|1|1|1|
+|2|1|2|
+|3|2|3|
 
 Test a join
 Want information on Sjukhusstock and its department
+
 - hospital_department can join with department_id on department table and hospital_id on hospital_table
 - query name from hospital table and name from department table
 
 TODO: left for reader: create this SQL
 
+SELECT h.name AS hospital_name, d.name AS department_name FROM Hospital h
+JOIN HospitalDepartment hd ON h.hospital_id = hd.hospital_id JOIN Department d ON hd.department_id = d.department_id WHERE h.name = 'Sjukhusstock';
