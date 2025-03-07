@@ -38,3 +38,6 @@ Loan table (relationen mellan de två entiteterna)
 
 ## Conceptual ERD
 <img src="../../assets/bookly_02.png" width=400>
+
+
+

@@ -28,7 +28,7 @@ Approach
 
 - indentify entities
 - identify relationships and cardinalities
-- create
+- create conceptual ERD
 - create tables
 
 Initial naitive conceptual ERD
