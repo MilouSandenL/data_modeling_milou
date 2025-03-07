@@ -11,6 +11,13 @@
 - address 
 - email
 
+**Borrowing**
+- ISBN
+- Borrowing_id
+- membership_id
+- return_date
+- borrow_date
+
 b. 
 - a member can have zero, one or several Borrowings
 - a borrowing can be made by one and only one member
