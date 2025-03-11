@@ -1,0 +1,12 @@
+SET search_path TO ezecream_05;
+
+TRINCATE TABLE Orders RESTART IDENTITY;
+
+INSERT INTO Orders (customer_id, order_id)
+VALUES
+    (2, '2024-05-04'),
+    (50, '900-02-05');
+
+-- DELETE FROM ezecream_05.orders WHERE customer_id = 50;
+
+SELECT * FROM ezecream_05.orders;
