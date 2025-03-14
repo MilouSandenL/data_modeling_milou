@@ -1,0 +1,74 @@
+CREATE SCHEMA IF NOT EXISTS hospital_management;
+SET search_path TO hospital_management;
+
+-- Hospital table
+CREATE TABLE IF NOT EXISTS Hospital (
+    hospital_id SERIAL PRIMARY KEY,
+    name VARCHAR(100) NOT NULL CHECK (name <> '') -- Name får inte vara tomt
+);
+
+-- Department table
+CREATE TABLE IF NOT EXISTS Department (
+    department_id SERIAL PRIMARY KEY,
+    name VARCHAR(100) NOT NULL CHECK (name <> '') 
+);
+
+-- Doctor table
+CREATE TABLE IF NOT EXISTS Doctor (
+    doctor_id SERIAL PRIMARY KEY,
+    first_name VARCHAR(50) NOT NULL CHECK (first_name <> ''),
+    last_name VARCHAR(50) NOT NULL CHECK (last_name <> '')
+);
+
+-- Many-to-Many: Hospital <-> Department
+CREATE TABLE IF NOT EXISTS HospitalDepartment (
+    hospital_id INT NOT NULL,
+    department_id INT NOT NULL,
+    PRIMARY KEY (hospital_id, department_id),
+    FOREIGN KEY (hospital_id) REFERENCES Hospital(hospital_id) ON DELETE CASCADE,
+    FOREIGN KEY (department_id) REFERENCES Department(department_id) ON DELETE CASCADE
+);
+
+-- Many-to-Many: Hospital <-> Doctor
+CREATE TABLE IF NOT EXISTS HospitalDoctor (
+    hospital_id INT NOT NULL,
+    doctor_id INT NOT NULL,
+    PRIMARY KEY (hospital_id, doctor_id),
+    FOREIGN KEY (hospital_id) REFERENCES Hospital(hospital_id) ON DELETE CASCADE,
+    FOREIGN KEY (doctor_id) REFERENCES Doctor(doctor_id) ON DELETE CASCADE
+);
+
+-- Many-to-Many: Department <-> Doctor
+CREATE TABLE IF NOT EXISTS DepartmentDoctor (
+    department_id INT NOT NULL,
+    doctor_id INT NOT NULL,
+    PRIMARY KEY (department_id, doctor_id),
+    FOREIGN KEY (department_id) REFERENCES Department(department_id) ON DELETE CASCADE,
+    FOREIGN KEY (doctor_id) REFERENCES Doctor(doctor_id) ON DELETE CASCADE
+);
+
+-- INSERT INTO hospital_management.HospitalDepartment (hospital_id, department_id)
+-- VALUES (999, 1);
+-- Det som hände när jag försökte lägga till en rad med ogiltig hospital_id: ERROR: insert or update on table "hospitaldepartment" violates foreign key constraint "hospitaldepartment_hospital_id_fkey"
+
+-- DELETE FROM hospital_management.Hospital WHERE hospital_id = 1;
+
+ALTER TABLE hospital_management.HospitalDepartment 
+ADD CONSTRAINT fk_hospital FOREIGN KEY (hospital_id) REFERENCES hospital_management.Hospital(hospital_id) ON DELETE CASCADE;
+
+ALTER TABLE hospital_management.HospitalDoctor 
+ADD CONSTRAINT fk_hospital_doctor FOREIGN KEY (hospital_id) REFERENCES hospital_management.Hospital(hospital_id) ON DELETE CASCADE;
+
+DELETE FROM hospital_management.Hospital WHERE hospital_id = 1; -- nu fungerar det!
+
+--INSERT INTO hospital_management.Hospital (name) VALUES ('');
+-- Det som hände:
+-- ERROR: constraint "fk_hospital" for relation "hospitaldepartment" already exists
+
+-- INSERT INTO hospital_management.Doctor (first_name, last_name) VALUES (NULL, 'Svensson');
+-- det som hände:
+--ERROR: constraint "fk_hospital" for relation "hospitaldepartment" already exists
+
+
+
+
