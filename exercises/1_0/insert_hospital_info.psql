@@ -1,0 +1,31 @@
+INSERT INTO hospital_management.Hospital (name) VALUES ('Karolinska'), ('Sahlgrenska');
+
+INSERT INTO hospital_management.Department (name) VALUES ('Ortopedi'), ('Kirurgi'), ('AT');
+
+INSERT INTO hospital_management.Doctor (first_name, last_name) 
+VALUES 
+    ('Anna', 'Svensson'),
+    ('Erik', 'Johansson'),
+    ('Lisa', 'Andersson'),
+    ('Gunnar', 'Gunnarsson'),
+    ('Kalle', 'Karlsson');
+
+INSERT INTO hospital_management.HospitalDepartment (hospital_id, department_id) 
+VALUES 
+    (1, 1), -- Karolinska har Ortopedi
+    (1, 2), -- Karolinska har Kirurgi
+    (2, 1), -- Sahlgrenska har Ortopedi
+    (2, 2);
+
+INSERT INTO hospital_management.HospitalDoctor (hospital_id, doctor_id) 
+VALUES 
+    (1, 1), -- Anna arbetar på Karolinska
+    (1, 2), -- Erik arbetar på Karolinska
+    (2, 1); -- Lisa arbetar på Sahlgrenska
+
+    INSERT INTO hospital_management.DepartmentDoctor (department_id, doctor_id) 
+VALUES 
+    (1, 1), -- Anna jobbar på Ortopedi
+    (2, 2), -- Erik jobbar på Kirurgi
+    (1, 3); -- Lisa jobbar på Ortopedi
+

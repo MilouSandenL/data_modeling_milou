@@ -1,0 +1,14 @@
+SELECT d.first_name, d.last_name, h.name AS hospital
+FROM Doctor d
+JOIN HospitalDoctor hd ON d.doctor_id = hd.doctor_id
+JOIN Hospital h ON hd.hospital_id = h.hospital_id;
+
+SELECT d.first_name, d.last_name, dep.name AS department
+FROM Doctor d
+JOIN DepartmentDoctor dd ON d.doctor_id = dd.doctor_id
+JOIN Department dep ON dd.department_id = dep.department_id;
+
+SELECT h.name AS hospital, dep.name AS department
+FROM Hospital h
+JOIN HospitalDepartment hd ON h.hospital_id = hd.hospital_id
+JOIN Department dep ON hd.department_id = dep.department_id;
