@@ -24,5 +24,5 @@
 
 # Min fysiska modell:
 
-
+<img src="../yh_labb/assets/Physicaldiagram.png" width="500">
 
