@@ -30,6 +30,6 @@
 ## Argument för att min modell uppnår 3NF:
 - Modellen uppfyller först både 1NF eftersom alla attribut är odelbara(innehåller ett och samma värde) och primärnycklar identifierar unika rader/ värden unikt. Modellen har även relationer istället för redundanta data (hanterar many-to-many relationer med bryggtabeller).
 
-- Den uppfyller även 2NF genom att den inte har några partiella beroenden (partial dependency)  - istället har jag flyttat data till egna tabeller för att göra dom enbart beroende av sina egna primärnycklar. I bryggtabellerna är alla icke-nyckelattribut fullt beroende av hela PK.
+- Den uppfyller även 2NF genom att den inte har några partiella beroenden (partial dependency)  - istället har jag flyttat data till egna tabeller för att göra dom enbart beroende av sina egna primärnycklar. I bryggtabellerna är alla icke-nyckelattribut fullt beroende av hela sin primär nyckel.
 
 - Slutligen uppfyller modellen 3NF genom att den inte har några transitiva beroenden (transitive dependency). "non-primary attributes depends on the key, the whole key and nothing but the key".
