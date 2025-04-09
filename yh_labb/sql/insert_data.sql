@@ -4,9 +4,13 @@ INSERT INTO Anläggning (anläggning_id, namn, address) VALUES
     ('AN001', 'Campus Göteborg', 'Vasagatan 11'),
     ('AN002', 'Campus Malmö', 'Malmgatan 22');
 
-INSERT INTO Program (program_id, program_namn, beskrivning) VALUES 
-    ('PRG001', 'Systemutvecklare .NET', 'Utbildning i .NET och databaser'),
-    ('PRG002', 'Frontend Developer', 'Utbildning i HTML, CSS, JS, React');
+INSERT INTO Program (program_id, program_namn) VALUES 
+    ('PRG001', 'Systemutvecklare .NET'),
+    ('PRG002', 'Frontend Developer');
+
+INSERT INTO Utbildningsledare (utb_ledare_id, f_namn, l_namn, email) VALUES 
+    ('LED001', 'Anna', 'Karlsson', 'anna@school.se'),
+    ('LED002', 'Johan', 'Svensson', 'johan@school.se');
 
 INSERT INTO Utbildare (utbildare_id, f_namn, l_namn, title) VALUES 
     ('UB001', 'Anna', 'Karlsson', 'anställd'),
@@ -23,9 +27,9 @@ INSERT INTO UtbKonsult (utbildare_id, konsult_företag_id) VALUES
     ('UB003', 'KF002');
 
 INSERT INTO Klass (klass_id, program_id, omgång_nr, utb_ledare_id, anläggning_id) VALUES 
-    ('KLS001', 'PRG001', 1, 'UB001', 'AN001'),
-    ('KLS002', 'PRG002', 2, 'UB002', 'AN002'),
-    ('KLS003', 'PRG002', 3, 'UB002', 'AN002');
+    ('KLS001', 'PRG001', 1, 'LED001', 'AN001'),
+    ('KLS002', 'PRG002', 2, 'LED002', 'AN002'),
+    ('KLS003', 'PRG002', 3, 'LED002', 'AN002');
 
 INSERT INTO Student (student_id, f_namn, l_namn, email, klass_id) VALUES 
     ('STU001', 'Eva', 'Andersson', 'eva@student.com', 'KLS001'),
