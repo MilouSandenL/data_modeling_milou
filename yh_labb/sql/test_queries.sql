@@ -7,7 +7,7 @@ SELECT
 FROM Klass k
 JOIN Utbildningsledare ul ON k.utb_ledare_id = ul.utb_ledare_id;
 
--- 2. Lista program och deras kurser
+-- Joinar tabellerna där id matchar för att få fram vilka kurser som finns i programmen
 SELECT 
     p.program_namn,
     k.kurs_namn
@@ -15,7 +15,7 @@ FROM Program p
 JOIN ProgramKurs pk ON p.program_id = pk.program_id
 JOIN Kurs k ON pk.kurs_id = k.kurs_id;
 
--- 3. Lista utbildare och vilka kurser de undervisar i
+-- query för att få fram vilka utbildare som undervisar vilka kurser, Joinar på utbildare, bryggtabellen utbkurs och kurs.
 SELECT 
     u.f_namn || ' ' || u.l_namn AS utbildare,
     k.kurs_namn
@@ -23,7 +23,7 @@ FROM Utbildare u
 JOIN UtbildareKurs uk ON u.utbildare_id = uk.utbildare_id
 JOIN Kurs k ON uk.kurs_id = k.kurs_id;
 
--- 4. Visa antal kurser per program
+-- räknar hur många kurser varje program har, grupperar med namnet på programmet
 SELECT 
     p.program_namn,
     COUNT(pk.kurs_id) AS antal_kurser
@@ -31,7 +31,7 @@ FROM Program p
 JOIN ProgramKurs pk ON p.program_id = pk.program_id
 GROUP BY p.program_namn;
 
--- 5. Lista fristående kurser, deras start och slutdatum
+-- Tar fram när de fristående kurserna börjar och sluta, får fram namn på kurs genom joinar den tabellen
 SELECT 
     fk.frikurs_id,
     k.kurs_namn,
@@ -40,7 +40,7 @@ SELECT
 FROM FriståendeKurs fk
 JOIN Kurs k ON fk.kurs_id = k.kurs_id;
 
--- 6. Visa alla studenter, deras klass och vilket program de går
+-- hämtar namn och klass på studenter och sedan joinar på program för att se vad dom studerar
 SELECT 
     s.f_namn || ' ' || s.l_namn AS student_namn,
     k.klass_id,
@@ -50,14 +50,14 @@ JOIN Klass k ON s.klass_id = k.klass_id
 JOIN Program p ON k.program_id = p.program_id;
 
 
--- Studenter med personnummer
+-- ser studenter och deras tillhörande personnummer
 SELECT 
     s.f_namn || ' ' || s.l_namn AS student_namn, 
     su.personnummer
 FROM Student s
 JOIN StudUppgifter su ON s.student_id = su.student_id;
 
--- Utbildare med typ och företag
+-- får fram alla utbildare och om de är konsulter eller anställda
 SELECT 
     u.f_namn || ' ' || u.l_namn AS utbildare,
     u.title,
@@ -66,7 +66,7 @@ FROM Utbildare u
 LEFT JOIN UtbKonsult uk ON u.utbildare_id = uk.utbildare_id
 LEFT JOIN Konsultföretag kf ON uk.konsult_företag_id = kf.konsult_företag_id;
 
--- Kurser på en specifik anläggning
+-- för att se vilka kurser som hålls på vilken anläggning.
 SELECT DISTINCT 
     k.kurs_namn,
     a.namn AS anläggning

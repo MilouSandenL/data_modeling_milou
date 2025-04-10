@@ -16,15 +16,15 @@
 
 # Min konceptuella modell:
 
-<img src="../yh_labb/assets/Conceptualdiagram.png" width="600">
+<img src="../yh_labb/assets/yrkesco_conceptual.png" width="600">
 
 # Min logiska modell:
 
-<img src="../yh_labb/assets/Logicaldiagram.png" width="500">
+<img src="../yh_labb/assets/yrkesco_logical.png" width="500">
 
 # Min fysiska modell:
 
-<img src="../yh_labb/assets/Physicaldiagram.png" width="500">
+<img src="../yh_labb/assets/yrkesco_physical.png" width="500">
 
 
 ## Argument för att min modell uppnår 3NF:
